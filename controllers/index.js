@@ -22,6 +22,8 @@ const getSignUpForm = (req, res) => {
 
 const PAGE_SIZE = 6
 const getData = async (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
     let _page = req.query.page
     if (_page) {
         _page = parseInt(_page)
