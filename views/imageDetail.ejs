@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="/stylesheets/bootrap5_css/bootstrap.min.css" rel="stylesheet">
+    <link href="/stylesheets/fontawesome/css/all.min.css" rel="stylesheet">
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <title>Hello, world!</title>
+</head>
+<body>
+<div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-success fs-4 p-5">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex justify-content-center align-items-center flex-column" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="40" class="d-block my-1" viewBox="0 0 118 94"
+                     role="img"><title>Bootstrap</title>
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"
+                          fill="#fff"></path>
+                </svg>
+                <span class="text-white">Pretty Image</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link text-white fs-3 mx-4" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white fs-3 mx-4" href="/users/images">Product's Your</a>
+                    </li>
+                </ul>
+
+                <form class="d-flex w-25">
+                    <input class="form-control me-3 w-100" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
+
+                <div class="d-flex align-items-center justify-content-center mx-5">
+                    <img src="data:image/jpeg;base64,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" width="50" height="50"
+                         class="border border-2 border-white rounded-circle">
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container p-5">
+            <div class="container text-center">
+                <img src="<%= data.image %>">
+                <p class="fw-bold fs-2 mt-3" style="overflow-wrap: break-word"><%= data.name %></p>
+                <div class="d-flex justify-content-center align-items-center mt-3" >
+
+                    <% if(data.tag[0] !== '') { %>
+                        <a href="#" class="me-3">#<%= data.tag[0] %></a>
+                    <% } %>
+
+                    <% if(data.tag[1] !== '') { %>
+                        <a href="#" class="me-3">#<%= data.tag[1] %></a>
+                    <% } %>
+
+                </div>
+                <p class="mt-3" style="overflow-wrap: break-word"><%= data.description %></p>
+                <p class="mt-3">Ngày tạo: <%= data.createdAt %></p>
+                <p class="mt-3">Ngày sửa gần nhất: <%= data.updatedAt %></p>
+                <p class="mt-3">Phiên bản: Version <%= data.__v %></p>
+            </div>
+        </div>
+
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center text-lg-start bg-light text-muted">
+        <!-- Section: Social media -->
+        <section
+                class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+        >
+            <!-- Left -->
+            <div class="me-5 d-none d-lg-block">
+                <span>Get connected with us on social networks:</span>
+            </div>
+            <!-- Left -->
+
+            <!-- Right -->
+            <div>
+                <a href="#" class="me-4 text-reset">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <!-- Right -->
+        </section>
+        <!-- Section: Social media -->
+
+        <!-- Section: Links  -->
+        <section class="">
+            <div class="container text-center text-md-start mt-5">
+                <!-- Grid row -->
+                <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <!-- Content -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            <i class="fas fa-gem me-3"></i>Company name
+                        </h6>
+                        <p>
+                            Here you can use rows and columns to organize your footer content. Lorem ipsum
+                            dolor sit amet, consectetur adipisicing elit.
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Products
+                        </h6>
+                        <p>
+                            <a href="#!" class="text-reset">Angular</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">React</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Vue</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Laravel</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Useful links
+                        </h6>
+                        <p>
+                            <a href="#!" class="text-reset">Pricing</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Settings</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Orders</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Help</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Contact
+                        </h6>
+                        <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+                        <p>
+                            <i class="fas fa-envelope me-3"></i>
+                            info@example.com
+                        </p>
+                        <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+                        <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+            </div>
+        </section>
+        <!-- Section: Links  -->
+
+        <!-- Copyright -->
+        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2021 Copyright:
+            <a class="text-reset fw-bold" href="https://mdbootstrap.com/">PrettyImage.com</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+</div>
+
+</body>
+</html>
+
+
+
+

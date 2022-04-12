@@ -1,0 +1,30 @@
+#paging ul {
+    display:flex;padding-left:0;list-style:none
+}
+#paging li {
+    position: relative;
+    display: block;
+    color: #0d6efd;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+#paging .paginationjs-page,
+#paging .paginationjs-prev,
+#paging .paginationjs-next,
+#paging .paginationjs-ellipsis
+{
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#paging .active {
+    background: #54da9b;
+    color: white;
+}
