@@ -9,7 +9,7 @@ const authentication = (req, res, next) => {
         if(err) {
             return res.redirect('/login')
         }
-        const user = await User.findOne({id: decoded})
+        const user = await User.findOne({_id: decoded})
         if(user) {
             res.locals.user = user
             next()
