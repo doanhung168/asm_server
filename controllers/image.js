@@ -33,7 +33,6 @@ const newImage = async (req, res) => {
 
         const {name, description, tag1, tag2} = req.body
         const tag = [tag1, tag2]
-        console.log(req.file.path)
         const image = getUrlImage(req.file.path)
 
         const newImage = new Image({name, description, tag, image})
