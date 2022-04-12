@@ -33,7 +33,9 @@ const newImage = async (req, res) => {
 
         const {name, description, tag1, tag2} = req.body
         const tag = [tag1, tag2]
+        console.log(req.file.path)
         const image = getUrlImage(req.file.path)
+
         const newImage = new Image({name, description, tag, image})
         const userID = res.locals.user._id.toString()
         const user = await User.findById(userID)
@@ -130,7 +132,7 @@ const deleteImage = async (req, res) => {
 
 const getUrlImage = (filePath) => {
     try {
-        const array = filePath.split('\\')
+        const array = filePath.split('/')
         return "/" + array[1] + '/' + array[2]
     } catch (e) {
         console.log(e.message)
