@@ -50,7 +50,16 @@ const getData = async (req, res) => {
 
     } else {
         const images = await Image.find()
-        return res.json({images})
+        return res.json({
+                        photos: {
+                            page: 0,
+                            pages: 0,
+                            perpage: 0,
+                            total: 0,
+                            photo: doc,
+                            stat: 'ok',
+                        }
+                    })
     }
 }
 
