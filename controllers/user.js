@@ -37,8 +37,8 @@ const getUser = async (req, res) => {
 
 const userLogin = async (req, res) => {
     const {email, password} = req.body
-    const user = await User.findOne({email: email})
-
+    const user = await User.findOne({email})
+    console.log(user)
     if (user) {
         bcrypt.compare(password, user.password, async (err, result) => {
             if (err) {
