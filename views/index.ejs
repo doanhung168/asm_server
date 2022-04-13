@@ -81,38 +81,6 @@
         <div class="album py-5 bg-light">
             <div class="container" >
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="content">
-                    <% for(const e of data){ %>
-                        <div class="col item" data-value="<%= e._id %>">
-                            <div class="card need-hover pagination">
-                                <img src="<%= e.image %>">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center">
-                                        <i class="fa-solid fa-tag me-2"></i>
-                                        <a href="#" class="me-2 fs-6 fst-italic"><%= e.tag[0] %></a>
-                                        <a href="#" class="me-2 fs-6 fst-italic"><%= e.tag[1] %></a>
-                                    </div>
-                                    <p class="fs-3 text-dark text-uppercase text-flow-hidden"><%= e.name %></p>
-                                    <p class="card-text text-flow-hidden fs-5"> <%= e.description %></p>
-                                    <div class="d-flex align-items-center mt-3">
-
-                                        <div class="d-flex align-items-center me-3">
-                                            <i class="fa-solid fa-clock"></i>
-                                            <span class="small fw-lighter ms-2"
-                                                  style="color: #929292"><%= e.updatedAt.getDate() + '/' + (e.updatedAt.getMonth() + 1) + '/' + e.updatedAt.getFullYear() + ' - ' + e.updatedAt.getHours() + ':' + e.updatedAt.getMinutes() + ':' + e.updatedAt.getSeconds() %></span>
-                                        </div>
-
-                                        <div class="d-flex align-items-center me-3">
-                                            <i class="fa-solid fa-comment-dots"></i><span class="ms-2">777</span>
-                                        </div>
-
-                                        <a class="d-flex align-items-center me-3 text-decoration-none" href="#">
-                                            <i class="fa-solid fa-share-nodes"></i><span class="ms-2">70000</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    <% } %>
 
                 </div>
                 <div class="d-flex justify-content-center align-items-center">
@@ -254,35 +222,7 @@
 <script src="/javascripts/bootrap5_js/bootstrap.bundle.min.js"></script>
 <script src="/jquery/jquery.js"></script>
 <script src="/javascripts/pagination.js"></script>
-<script src="/javascripts/main.js"></script>
-<script>
-    $(document).ready(() => {
-        const userID = '<%= userID %>'
-        const signOutE = $('#SignOut')
-        if (userID.length === 0) {
-            $('#dropdownMenuButton1').html('Account')
-            signOutE.attr('class', 'd-none')
-        } else {
-            $('#dropdownMenuButton1').html(`<%= name %>`)
-            $('#SignIn').attr('class', 'd-none')
-        }
-
-        $('.item').click(function () {
-            window.location.href = `/images/${$(this).attr('data-value')}`
-        })
-
-        signOutE.click(() => {
-            const delete_cookie = function (name) {
-                document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-            };
-            delete_cookie('token')
-            location.reload();
-        })
-
-
-    })
-</script>
-
+<script src="/javascripts/index.js"></script>
 </body>
 </html>
 

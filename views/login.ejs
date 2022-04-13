@@ -36,19 +36,9 @@
                         <a class="nav-link text-white fs-3 mx-4" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white fs-3 mx-4" href="#">Product's Your</a>
+                        <a class="nav-link text-white fs-3 mx-4" href="/users/images">Product's Your</a>
                     </li>
                 </ul>
-
-                <form class="d-flex w-25">
-                    <input class="form-control me-3 w-100" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-light" type="submit">Search</button>
-                </form>
-
-                <div class="">
-                    <a class="nav-link text-white mx-5 d-none" href="/users/login"  >Sign in</a>
-                </div>
-
             </div>
         </div>
     </nav>
@@ -65,7 +55,7 @@
                             <div class="col-md-6 col-lg-7 d-flex align-items-center">
                                 <div class="card-body p-4 p-lg-5 text-black">
 
-                                    <form method="post" action="/login" id="form" >
+                                    <form id="form" >
 
                                         <div class="d-flex align-items-center mb-3 pb-1">
                                             <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
@@ -78,19 +68,19 @@
 
                                         <div class="form-outline mb-4">
                                             <label class="form-label" for="form2Example17">Email address</label>
-                                            <input type="email" id="form2Example17"
+                                            <input type="email" id="email"
                                                    class="form-control form-control-lg" name="email"/>
                                         </div>
 
                                         <div class="form-outline mb-4">
                                             <label class="form-label" for="form2Example27">Password</label>
-                                            <input type="password" id="form2Example27"
+                                            <input type="password" id="password"
                                                    class="form-control form-control-lg" name="password"/>
                                         </div>
                                         <div class="pt-1 mb-4">
-                                            <button class="btn btn-dark btn-lg btn-block" type="button" id="btn">Login</button>
+                                            <button class="btn btn-dark btn-lg btn-block" type="button" id="btnLogin">Login</button>
                                         </div>
-                                        <p id="result"></p>
+                                        <p id="textValid"></p>
 
                                         <a class="small text-muted" href="#">Forgot password?</a>
                                         <p class="mb-5 pb-lg-2 mt-1">
@@ -117,23 +107,43 @@
 <script src="/jquery/jquery.js"></script>
 <script type="text/javascript">
     $(document).ready(() => {
-        $('#btn').click((e) => {
+
+        $('#btnLogin').click((e) => {
             e.preventDefault()
+            const email = $('#email').val()
+            const password = $('#password').val()
+            const textValidE = $('#textValid')
+            textValidE.html('')
+
+            if(email.length === 0) {
+                textValidE.html('Vui lòng nhập email')
+                return
+            }
+
+            if(password.length < 6) {
+                textValidE.html('Vui lòng nhập password lớn hơn hoặc bằng 6 kí tự')
+                return
+            }
+
             $.ajax({
-                url: '/login',
+                url: '/users/login',
                 type: 'POST',
-                data: $('#form').serialize(),
-                processData: false,
+                data: {
+                    email,
+                    password
+                },
                 success: function (response) {
-                    if(response.success) {
+                    console.log(response)
+
+                    if(response.result.success) {
                         window.location.href = '/'
-                    } else {
-                        $('#result').html(response.message)
                     }
+
+                    textValidE.html(response.result.message)
                 }
             })
             .done(() => console.log('done'))
-            .fail((e) => console.log(e))
+            .fail((e) => console.log('fail' + e))
         })
     })
 </script>

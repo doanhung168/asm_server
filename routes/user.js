@@ -4,15 +4,13 @@ const ImageController = require('../controllers/image')
 const UserController = require('../controllers/user')
 const AuthMiddleware = require('../middleware/authencation')
 
-router.route('/private')
-    .get(AuthMiddleware.authentication ,(req,res) => res.send('thành công'))
 
-router.route('/images/:imageID')
+router.route('/images/:imageID/update')
+    .get(AuthMiddleware.authentication, ImageController.getUpdateImageForm)
     .post(AuthMiddleware.authentication, ImageController.updateImage)
-    .delete(AuthMiddleware.authentication ,ImageController.deleteImage)
 
-router.route('/images/update/:imageID')
-    .get(AuthMiddleware.authentication, UserController.getUpdateImageForm)
+router.route('/images/:imageID/delete')
+    .post(AuthMiddleware.authentication ,ImageController.deleteImage)
 
 
 router.route('/images')
@@ -22,15 +20,15 @@ router.route('/images')
 router.route('/images')
     .post(AuthMiddleware.authentication, ImageController.newImage)
 
-router.route('/:userID')
-    .get(UserController.getUser)
-    .patch(UserController.updateUser)
-    .put(UserController.replaceUser)
-    .delete(UserController.deleteUser)
 
+router.route('/login')
+    .post(UserController.userLogin)
 
-router.route('/')
-    .get(UserController.getAllUser)
+router.route('/register')
     .post(UserController.newUser)
+
+router.route('/getCurrentUserID')
+    .get(UserController.getCurrentUser)
+
 
 module.exports = router

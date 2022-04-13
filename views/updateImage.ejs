@@ -257,7 +257,7 @@
             event.preventDefault()
             const imageID = '<%= data._id %>'
             $.ajax({
-                url: `/users/images/${imageID}`,
+                url: `/users/images/${imageID}/update`,
                 type: 'POST',
                 data: new FormData($('#formNewImage')[0]),
                 processData: false,

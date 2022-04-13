@@ -5,21 +5,63 @@ const multer = require('multer')
 const uploadImage = require('../middleware/uploadImage')
 const upload = uploadImage.single('image')
 
-const getAllImage = async (req, res) => {
-    const images = await Image.find()
-    return res.status(200).json({images})
+const PAGE_SIZE = 6
+const getImages = async (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    let _page = req.query.page
+    if (_page) {
+        _page = parseInt(_page)
+        const skip = (_page - 1) * PAGE_SIZE;
+        Image.find({})
+            .skip(skip)
+            .limit(PAGE_SIZE)
+            .exec((err, doc) => {
+                Image.count().exec((err, count) => {
+                    if(doc) {
+                        res.json({
+                            photos: {
+                                page: _page,
+                                pages: count / PAGE_SIZE,
+                                perpage: PAGE_SIZE,
+                                total: count,
+                                photo: doc,
+                                stat: 'ok',
+                            }
+                        })
+                    } else {
+                        res.json({
+                            photos: {
+                                page: _page,
+                                pages: count / PAGE_SIZE,
+                                perpage: PAGE_SIZE,
+                                total: count,
+                                photo: [],
+                                stat: 'ok',
+                            }
+                        })
+                    }
+
+                })
+
+            })
+
+
+    } else {
+        const images = await Image.find()
+        return res.json({
+            photos: {
+                photo: images,
+                stat: 'ok',
+            }
+        })
+    }
 }
 
-const getImage = async (req, res) => {
+const getImageByID = async (req, res) => {
     const {imageID} = req.params
     const image = await Image.findById(imageID)
     return res.render('imageDetail', { data : image})
-}
-
-const getImageDataByID = async (req, res) => {
-    const {imageID} = req.params
-    const image = await Image.findById(imageID)
-    return res.json({ result : image, error: null})
 }
 
 
@@ -47,9 +89,6 @@ const newImage = async (req, res) => {
             return res.status(201).send({result: 'redirect', url:'/users/images'})
         }
     })
-
-
-
 }
 
 const updateImage = async (req, res) => {
@@ -139,5 +178,17 @@ const getUrlImage = (filePath) => {
     }
 }
 
+const getUpdateImageForm = async (req, res, next) => {
+    const {imageID} = req.params
+    const image = await Image.findById(imageID)
+    if (image) {
+        return res.status(200).render('updateImage', {data: image})
+    } else {
+        return next()
+    }
+}
 
-module.exports = {getAllImage, getImage, newImage, updateImage, deleteImage}
+
+
+
+module.exports = {getImageByID, newImage, updateImage, deleteImage, getImages, getUpdateImageForm}

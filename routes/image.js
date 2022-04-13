@@ -2,9 +2,9 @@ const router = require('express-promise-router')()
 const ImageController = require('../controllers/image')
 
 router.route('/')
-    .get(ImageController.getAllImage)
+    .get(ImageController.getImages)
 
 router.route('/:imageID')
-    .get(ImageController.getImage)
+    .get(ImageController.getImageByID)
 
 module.exports = router

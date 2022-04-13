@@ -327,17 +327,16 @@
             const confirmResult = confirm("Bạn chắc chắn muốn xóa ảnh này?")
             if (confirmResult) {
                 $.ajax({
-                    url: `/users/images/${$(this).attr('data-value')}`,
-                    type: 'DELETE',
-                    processData: false,
-                    contentType: false,
+                    url: `/users/images/${$(this).attr('data-value')}/delete`,
+                    type: 'POST',
                     success: (response) => {
-                        console.log(response)
+                        console.log( response.data)
                         const data = response.data
                         if(data.length === 0) {
-                            $('#newImageForm').removeClass('d-none')
+                            $('#container-2').removeClass('d-none')
+                            $('#container').html('')
                         } else {
-                            $('#newImageForm').addClass('d-none')
+                            $('#container-2').addClass('d-none')
                             $('#container').html('')
                             for (const e of data) {
                                 $('#container').append
@@ -409,7 +408,7 @@
         )
 
         $('.editImage').click(function () {
-                window.location.href = `/users/images/update/${$(this).attr('data-value')}`
+                window.location.href = `/users/images/${$(this).attr('data-value')}/update`
             }
         )
     })
