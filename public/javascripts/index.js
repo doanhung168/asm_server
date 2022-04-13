@@ -26,9 +26,9 @@ function loadPage(page) {
             const images = data.photos.photo
             for (const e of images) {
                 const item = $(`
-                    <div class="col item" data-value="${e._id}">
+                    <div class="col" >
                             <div class="card need-hover">
-                                <img src="${e.image}">
+                                <img class="item123" data-value="${e._id}" src="${e.image}">
                                 <div class="card-body">
                                     <div class="d-flex align-items-center">
                                         <i class="fa-solid fa-tag me-2"></i>
@@ -93,9 +93,9 @@ $(document).ready(() => {
             const images = response.photos.photo
             for (const e of images) {
                 const item = $(`
-                    <div class="col item" data-value="${e._id}">
+                    <div class="col" >
                             <div class="card need-hover">
-                                <img src="${e.image}">
+                                <img class="item123"  data-value="${e._id}" src="${e.image}">
                                 <div class="card-body">
                                     <div class="d-flex align-items-center">
                                         <i class="fa-solid fa-tag me-2"></i>
@@ -126,7 +126,7 @@ $(document).ready(() => {
         }
     })
 
-    $('.item').click(function () {
+    $('body').on('click','.item123',function(){
         window.location.href = `/images/${$(this).attr('data-value')}`
     })
 
