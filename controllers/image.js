@@ -170,7 +170,7 @@ const deleteImage = async (req, res) => {
 
 const getUrlImage = (filePath) => {
     try {
-        const array = filePath.split('\\')
+        const array = filePath.split('/')
         return "/" + array[1] + '/' + array[2]
     } catch (e) {
         console.log(e.message)
