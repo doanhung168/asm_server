@@ -26,9 +26,9 @@ function loadPage(page) {
             const images = data.photos.photo
             for (const e of images) {
                 const item = $(`
-                    <div class="col" data-value="${e._id}">
+                    <div class="col item" data-value="${e._id}">
                             <div class="card need-hover">
-                                <img class="item123" src="${e.image}">
+                                <img src="${e.image}">
                                 <div class="card-body">
                                     <div class="d-flex align-items-center">
                                         <i class="fa-solid fa-tag me-2"></i>
@@ -38,17 +38,14 @@ function loadPage(page) {
                                     <p class="fs-3 text-dark text-uppercase text-flow-hidden">${e.name}</p>
                                     <p class="card-text text-flow-hidden fs-5"> ${e.name}</p>
                                     <div class="d-flex align-items-center mt-3">
-
                                         <div class="d-flex align-items-center me-3">
                                             <i class="fa-solid fa-clock"></i>
                                             <span class="small fw-lighter ms-2"
                                                   style="color: #929292">${e.updatedAt}</span>
                                         </div>
-
                                         <div class="d-flex align-items-center me-3">
                                             <i class="fa-solid fa-comment-dots"></i><span class="ms-2">777</span>
                                         </div>
-
                                         <a class="d-flex align-items-center me-3 text-decoration-none" href="#">
                                             <i class="fa-solid fa-share-nodes"></i><span class="ms-2">70000</span>
                                         </a>
@@ -96,9 +93,9 @@ $(document).ready(() => {
             const images = response.photos.photo
             for (const e of images) {
                 const item = $(`
-                    <div class="col" data-value="${e._id}">
+                    <div class="col item" data-value="${e._id}">
                             <div class="card need-hover">
-                                <img class="item123" src="${e.image}">
+                                <img src="${e.image}">
                                 <div class="card-body">
                                     <div class="d-flex align-items-center">
                                         <i class="fa-solid fa-tag me-2"></i>
@@ -108,17 +105,14 @@ $(document).ready(() => {
                                     <p class="fs-3 text-dark text-uppercase text-flow-hidden">${e.name}</p>
                                     <p class="card-text text-flow-hidden fs-5"> ${e.name}</p>
                                     <div class="d-flex align-items-center mt-3">
-
                                         <div class="d-flex align-items-center me-3">
                                             <i class="fa-solid fa-clock"></i>
                                             <span class="small fw-lighter ms-2"
                                                   style="color: #929292">${e.updatedAt}</span>
                                         </div>
-
                                         <div class="d-flex align-items-center me-3">
                                             <i class="fa-solid fa-comment-dots"></i><span class="ms-2">777</span>
                                         </div>
-
                                         <a class="d-flex align-items-center me-3 text-decoration-none" href="#">
                                             <i class="fa-solid fa-share-nodes"></i><span class="ms-2">70000</span>
                                         </a>
@@ -132,8 +126,7 @@ $(document).ready(() => {
         }
     })
 
-    $('.item123').click(function () {
-        alert('123)
+    $('.item').click(function () {
         window.location.href = `/images/${$(this).attr('data-value')}`
     })
 
